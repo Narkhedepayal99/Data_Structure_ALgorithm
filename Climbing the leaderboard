@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  int n;
+  cin>>n;
+  int arr[n];
+  for(int i=0;i<n;i++)
+  cin>>arr[i];
+  int dp[n];
+  dp[0]=1;
+  for(int i=1;i<n;i++)
+  if(arr[i]==arr[i-1])
+  dp[i]=dp[i-1];
+  else
+  dp[i]=dp[i-1]+1;
+  int m,pos=n-1;
+  cin>>m;
+  for(int a=0;a<m;a++)
+  {
+  	int mark;
+  	cin>>mark;
+  	while(arr[pos]<mark&&pos>=0)
+  	pos--;
+  	if(arr[pos]==mark)
+  	cout<<dp[pos]<<endl;
+  	else
+  	cout<<dp[pos]+1<<endl;
+  }
+}
